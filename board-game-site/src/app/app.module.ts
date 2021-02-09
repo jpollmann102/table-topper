@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ChartsModule } from 'ng2-charts';
+import { ChartModule } from 'angular-highcharts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { SortableTableComponent } from './game-details/game-listings/sortable-ta
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { ResultRowComponent } from './search-results/result-row/result-row.component';
 import { GameReviewsComponent } from './game-details/game-reviews/game-reviews.component';
+import { GameReviewComponent } from './game-details/game-reviews/game-review/game-review.component';
 
 @NgModule({
   declarations: [
@@ -47,10 +48,11 @@ import { GameReviewsComponent } from './game-details/game-reviews/game-reviews.c
     SortableTableComponent,
     SearchResultsComponent,
     ResultRowComponent,
-    GameReviewsComponent
+    GameReviewsComponent,
+    GameReviewComponent
   ],
   imports: [
-    ChartsModule,
+    ChartModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

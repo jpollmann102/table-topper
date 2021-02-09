@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Chart } from 'angular-highcharts';
 import { BoardgameService } from '../../boardgame.service';
 
 @Component({
@@ -10,7 +11,43 @@ export class GameReviewsComponent implements OnInit {
   @Input() game:any;
   public reviews:any;
   public ratings:any[] = [];
-
+  chart = new Chart({
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: 'Number of votes'
+    },
+    xAxis: {
+      title: {
+        text: 'Rating'
+      },
+      categories: ['1','2','3','4','5']
+    },
+    yAxis: {
+      title: {
+        text: 'Rating'
+      }
+    },
+    credits: {
+      enabled: false
+    },
+    legend: {
+      enabled: false
+    },
+    series: [
+      {
+        name: 'Number of votes',
+        type: 'bar',
+        color: '#214c23',
+        dataLabels: {
+          enabled: true,
+          color: '#000000'
+        },
+        data: []
+      }
+    ]
+  });
 
   constructor(private bgService:BoardgameService) { }
 
@@ -26,8 +63,11 @@ export class GameReviewsComponent implements OnInit {
 
   async getReviews(id:string) {
     this.reviews = await this.bgService.getBoardGameReviews(id).toPromise();
-
-    console.log(this.reviews);
+    this.chart.addPoint(this.reviews.summary.one_star_count);
+    this.chart.addPoint(this.reviews.summary.two_star_count);
+    this.chart.addPoint(this.reviews.summary.three_star_count);
+    this.chart.addPoint(this.reviews.summary.four_star_count);
+    this.chart.addPoint(this.reviews.summary.five_star_count);
   }
 
 }
