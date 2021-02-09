@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +50,7 @@ import { GameReviewsComponent } from './game-details/game-reviews/game-reviews.c
     GameReviewsComponent
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
