@@ -1,0 +1,22 @@
+<h1>Description</h1>
+<hr>
+<p>{{ game.description_preview }}</p>
+<div class="row">
+  <div class="col-6">
+    <h1>Categories</h1>
+    <hr>
+    <p>{{ game.categories.join(', ') }}</p>
+  </div>
+  <div class="col-6">
+    <h1>Mechanics</h1>
+    <hr>
+    <p>{{ game.mechanics.join(', ') }}</p>
+  </div>
+</div>
+<h1>Official Links</h1>
+<hr>
+<p *ngIf="!game.official_url && !game.rules_url && !game.bgg_id && !game.url"><i>No links</i></p>
+<a *ngIf="game.official_url" [href]="game.official_url" target="_blank" rel="noopener noreferrer">Publisher</a>
+<a *ngIf="game.rules_url" [href]="game.rules_url" target="_blank" rel="noopener noreferrer">Rules</a>
+<a *ngIf="game.bgg_id" [href]="bggLink()" target="_blank" rel="noopener noreferrer">Board Game Geek</a>
+<a *ngIf="game.url" [href]="game.url" target="_blank" rel="noopener noreferrer">Board Game Atlas</a>

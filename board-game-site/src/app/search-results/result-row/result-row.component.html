@@ -1,0 +1,19 @@
+<div class="row" (click)="goToGame()">
+  <div class="col-2">
+    <img [src]="game.images.small">
+  </div>
+  <div class="col-4">
+    <p><strong>{{ game.name }}</strong> ({{ game.year_published ? game.year_published : 'No Year Listed' }})</p>
+    <small>{{ game.primary_designer?.name }}</small>
+    <p><small><span class="span-row">{{ game.min_players ? game.min_players : 'Unknown' }} - {{ game.max_players ? game.max_players : 'Unknown' }} players</span><span class="span-row">{{ game.min_playtime ? game.min_playtime : 'Unknown' }} - {{ game.max_playtime ? game.max_playtime : 'Unknown' }} minutes</span></small></p>
+    <p><small><span class="span-row">Rating: {{ game.average_user_rating | number : '1.2-2' }} / 5</span><span class="span-row">Board Game Atlas Rank: {{ game.rank }}</span><span class="span-row"></span></small></p>
+  </div>
+  <div class="col-3">
+    <p><strong>Categories</strong></p>
+    <p>{{ game.categories.join(', ') }}</p>
+  </div>
+  <div class="col-3">
+    <p><strong>Mechanics</strong></p>
+    <p>{{ game.mechanics.join(', ') }}</p>
+  </div>
+</div>

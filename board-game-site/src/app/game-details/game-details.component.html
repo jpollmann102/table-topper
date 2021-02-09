@@ -1,0 +1,155 @@
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <div class="spinner-border text-success" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div *ngIf="!loading">
+  <div class="d-flex justify-content-left material-div">
+    <img [src]="game.images.medium">
+    <div class="game-header">
+      <div class="d-flex align-items-baseline">
+        <h1>{{ game.name }}</h1>
+        <p>({{ game.year_published }})</p>
+      </div>
+      <h4>{{ game.primary_designer.name }}</h4>
+      <div class="d-flex">
+        <p class="divider detail-cell top-border"><strong>Players:</strong> {{ game.min_players }} - {{ game.max_players }}</p>
+        <p class="divider detail-cell top-border"><strong>Playtime:</strong> {{ game.min_playtime }} - {{ game.max_playtime }} minutes</p>
+        <p class="divider detail-cell top-border"><strong>Learning Curve:</strong> {{ game.average_learning_complexity | number : '1.2-2' }} / 5</p>
+        <p class="detail-cell top-border"><strong>Strategy Weight:</strong> {{ game.average_strategy_complexity | number : '1.2-2' }} / 5</p>
+      </div>
+      <p>{{ game.formattedDescription }}.. <a (click)="activeTab = 'nav-overview'">Read more</a></p>
+      <div class="d-flex">
+        <p class="detail-cell"><strong>User Rating:</strong> {{ game.average_user_rating | number : '1.2-2' }} / 5 ({{ game.num_user_ratings }} Ratings)</p>
+        <p class="detail-cell"><strong>Amazon Rank:</strong> {{ game?.amazon_rank }}</p>
+        <p class="detail-cell"><strong>Board Game Atlas Rank:</strong> {{ game.rank }}</p>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a
+        class="nav-item nav-link"
+        [class.active]="activeTab == 'nav-overview'"
+        role="tab"
+        data-toggle="tab"
+        id="nav-overview-tab"
+        aria-controls="nav-overview"
+        [attr.aria-selected]="activeTab == 'nav-overview'"
+        (click)="activeTab = 'nav-overview'"
+      >
+        Overview
+      </a>
+      <a
+        class="nav-item nav-link"
+        [class.active]="activeTab == 'nav-gallery'"
+        role="tab"
+        data-toggle="tab"
+        id="nav-gallery-tab"
+        aria-controls="nav-gallery"
+        [attr.aria-selected]="activeTab == 'nav-gallery'"
+        (click)="activeTab = 'nav-gallery'"
+      >
+        Gallery
+      </a>
+      <a
+        class="nav-item nav-link"
+        [class.active]="activeTab == 'nav-listings'"
+        role="tab"
+        data-toggle="tab"
+        id="nav-listings-tab"
+        aria-controls="nav-listings"
+        [attr.aria-selected]="activeTab == 'nav-listings'"
+        (click)="activeTab = 'nav-listings'"
+      >
+        Listings
+      </a>
+      <a
+        class="nav-item nav-link"
+        [class.active]="activeTab == 'nav-reviews'"
+        role="tab"
+        data-toggle="tab"
+        id="nav-reviews-tab"
+        aria-controls="nav-reviews"
+        [attr.aria-selected]="activeTab == 'nav-reviews'"
+        (click)="activeTab = 'nav-reviews'"
+      >
+        Reviews
+      </a>
+      <a
+        class="nav-item nav-link"
+        [class.active]="activeTab == 'nav-credits'"
+        role="tab"
+        data-toggle="tab"
+        id="nav-credits-tab"
+        aria-controls="nav-credits"
+        [attr.aria-selected]="activeTab == 'nav-credits'"
+        (click)="activeTab = 'nav-credits'"
+        >
+        Credits
+      </a>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div
+      role="tabpanel"
+      id="overview"
+      class="tab-pane fade in show"
+      [class.active]="activeTab == 'nav-overview'"
+      [class.show]="activeTab == 'nav-overview'"
+      aria-labelledby="nav-overview-tab"
+    >
+      <div class="tab-content">
+        <app-game-overview [game]="game"></app-game-overview>
+      </div>
+    </div>
+    <div
+      role="tabpanel"
+      id="gallery"
+      class="tab-pane fade in show"
+      [class.active]="activeTab == 'nav-gallery'"
+      [class.show]="activeTab == 'nav-gallery'"
+      aria-labelledby="nav-gallery-tab"
+    >
+      <div class="tab-content">
+        <app-game-images [game]="game"></app-game-images>
+      </div>
+    </div>
+    <div
+      role="tabpanel"
+      id="listings"
+      class="tab-pane fade in show"
+      [class.active]="activeTab == 'nav-listings'"
+      [class.show]="activeTab == 'nav-listings'"
+      aria-labelledby="nav-listings-tab"
+    >
+      <div class="tab-content">
+        <app-game-listings [game]="game"></app-game-listings>
+      </div>
+    </div>
+    <div
+      role="tabpanel"
+      id="reviews"
+      class="tab-pane fade in show"
+      [class.active]="activeTab == 'nav-reviews'"
+      [class.show]="activeTab == 'nav-reviews'"
+      aria-labelledby="nav-reviews-tab"
+    >
+      <div class="tab-content">
+        <app-game-reviews [game]="game"></app-game-reviews>
+      </div>
+    </div>
+    <div
+      role="tabpanel"
+      id="credits"
+      class="tab-pane fade in show"
+      [class.active]="activeTab == 'nav-credits'"
+      [class.show]="activeTab == 'nav-credits'"
+      aria-labelledby="nav-credits-tab"
+    >
+      <div class="tab-content">
+        <app-game-credits [game]="game"></app-game-credits>
+      </div>
+    </div>
+  </div>
+</div>

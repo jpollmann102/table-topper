@@ -1,0 +1,44 @@
+#navbar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  background: #4caf50;
+  color: #fff;
+  transition: all 0.3s;
+  -webkit-box-shadow: 1px 5px 15px 5px rgba(0,0,0,0.3);
+  box-shadow: 1px 5px 15px 5px rgba(0,0,0,0.3);
+}
+
+#navbar .navbar-header {
+  padding: 20px;
+  background: #214c23;
+}
+
+#navbar ul.components {
+  padding: 10px 0;
+  border-bottom: 1px solid #3f9243;
+}
+
+#navbar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#navbar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#navbar ul li a:hover {
+  color: #214c23;
+  background: #fff;
+}
+
+#navbar ul li.active>a {
+  color: #fff;
+  background: #3f9243;
+}

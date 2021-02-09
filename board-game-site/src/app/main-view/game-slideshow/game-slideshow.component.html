@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-between align-items-center">
+  <div class="nav-button" (click)="goDown()">
+    <a [ngStyle]="{'cursor': toShow[0] === 0 ? 'not-allowed' :  'pointer'}">
+      <span class="left"></span>
+    </a>
+  </div>
+  <div *ngIf="!games.games">
+    <div class="spinner-border text-success" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="games.games">
+    <app-game-tile *ngFor="let i of toShow" [game]="games.games[i]"></app-game-tile>
+  </div>
+  <div class="nav-button" (click)="goUp()">
+    <a [ngStyle]="{'cursor': toShow[2] === 8 ? 'not-allowed' :  'pointer'}">
+      <span class="right"></span>
+    </a>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <div *ngFor="let i of [0,3,6]" class="progress" [ngClass]="{'active': toShow[0] == i}"></div>
+</div>

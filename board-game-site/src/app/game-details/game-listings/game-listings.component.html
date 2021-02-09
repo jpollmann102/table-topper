@@ -1,0 +1,8 @@
+<h4>MSRP: {{ game.msrp_text }}</h4>
+<h4 *ngIf="historicalLow">Historical Low: ${{ historicalLow[0]?.price }} on {{ historicalLow[0]?.date | date : 'longDate' }}</h4>
+
+<app-sortable-table
+  [dataMap]="pricesMap"
+  [rows]="pricesTable"
+  (onRowClick)="onRowClick($event)"
+></app-sortable-table>
