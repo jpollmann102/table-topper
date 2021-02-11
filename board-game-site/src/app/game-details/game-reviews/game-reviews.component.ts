@@ -39,7 +39,7 @@ export class GameReviewsComponent implements OnInit {
       {
         name: 'Number of votes',
         type: 'bar',
-        color: '#214c23',
+        color: '#1a237e',
         dataLabels: {
           enabled: true,
           color: '#000000'

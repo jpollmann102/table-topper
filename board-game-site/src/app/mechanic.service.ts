@@ -13,10 +13,16 @@ export class MechanicService {
   mechanicsChange:Subject<any> = new Subject<any>();
 
   constructor(private http:HttpClient) {
-    this.getMechanics();
     this.mechanicsChange.subscribe((value) => {
       this.mechanics = value;
     });
+    this.checkLocalStorage();
+  }
+
+  checkLocalStorage() {
+    const mechanics = JSON.parse(localStorage.getItem('ttr-mechanics'));
+    if(mechanics) this.createMechanics(mechanics);
+    else this.getMechanics();
   }
 
   getResponse(url:string):Observable<any> {
@@ -28,16 +34,20 @@ export class MechanicService {
     return response;
   }
 
-
   convertToObject(arr:any[]):any {
     return arr.reduce((obj, item) => (obj[item.id] = item.name, obj), {});
+  }
+
+  createMechanics(mechanics:any) {
+    const asObj:any = this.convertToObject(mechanics.mechanics);
+    this.mechanicsChange.next(asObj);
   }
 
   async getMechanics() {
     const url = `https://api.boardgameatlas.com/api/game/mechanics?client_id=${this.client_id}`;
     const mechanics:any = await this.getResponse(url).toPromise();
-    const asObj:any = this.convertToObject(mechanics.mechanics);
-    this.mechanicsChange.next(asObj);
+    localStorage.setItem('ttr-mechanics', JSON.stringify(mechanics));
+    this.createMechanics(mechanics);
   }
 
 }

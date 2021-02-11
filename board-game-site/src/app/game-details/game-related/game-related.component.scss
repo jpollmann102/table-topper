@@ -1,0 +1,8 @@
+p {
+  font-size: 1.1em;
+  color: var(--primary);
+  &:hover {
+    color: var(--primary-dark);
+    cursor: pointer;
+  }
+}

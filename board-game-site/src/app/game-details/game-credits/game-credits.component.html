@@ -1,10 +1,16 @@
-<h3>Publisher</h3>
-<hr>
-<p>{{ game.primary_publisher?.name }}</p>
-<h3>Artists</h3>
-<hr>
-<p>{{ game.artists.join(", ") }}</p>
-<h3>Additional Names or Tags</h3>
-<hr>
-<p>{{ game.tags.join(", ") }}</p>
-<p>{{ game.names.join(", ") }}</p>
+<div *ngIf="game.primary_publisher">
+  <h3>Publisher</h3>
+  <hr>
+  <p>{{ game.primary_publisher.name }}</p>
+</div>
+<div *ngIf="game.artists.length > 0">
+  <h3>Artists</h3>
+  <hr>
+  <p>{{ game.artists.join(", ") }}</p>
+</div>
+<div *ngIf="game.tags.length > 0 || game.names.length > 0">
+  <h3>Additional Names or Tags</h3>
+  <hr>
+  <p *ngIf="game.names.length > 0">{{ game.names.join(", ") }}</p>
+  <p *ngIf="game.tags.length > 0">{{ game.tags.join(", ") }}</p>
+</div>

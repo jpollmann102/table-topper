@@ -1,0 +1,14 @@
+<div class="top-bar">
+  <div class="top-bar-content d-flex justify-content-between align-content-center">
+    <div class="game-ticker" *ngFor="let game of tickerGames" (click)="goToGame(game)">
+      <img [src]="game.images.thumb">
+      <p>{{ game.name }}</p>
+    </div>
+    <div class="">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search games" aria-label="Search games" aria-describedby="button-addon2" [(ngModel)]="searchText">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="searchGame()">Search</button>
+      </div>
+    </div>
+  </div>
+</div>

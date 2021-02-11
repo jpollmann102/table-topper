@@ -13,10 +13,16 @@ export class CategoryService {
   categoriesChange:Subject<any> = new Subject<any>();
 
   constructor(private http:HttpClient) {
-    this.getCategories();
     this.categoriesChange.subscribe((value) => {
       this.categories = value;
     });
+    this.checkLocalStorage();
+  }
+
+  checkLocalStorage() {
+    const categories = JSON.parse(localStorage.getItem('ttr-categories'));
+    if(categories) this.createCategories(categories);
+    else this.getCategories();
   }
 
   getResponse(url:string):Observable<any> {
@@ -32,10 +38,15 @@ export class CategoryService {
     return arr.reduce((obj, item) => (obj[item.id] = item.name, obj), {});
   }
 
+  createCategories(categories:any) {
+    const asObj:any = this.convertToObject(categories.categories);
+    this.categoriesChange.next(asObj);
+  }
+
   async getCategories() {
     const url = `https://api.boardgameatlas.com/api/game/categories?client_id=${this.client_id}`;
     const categories:any = await this.getResponse(url).toPromise();
-    const asObj:any = this.convertToObject(categories.categories);
-    this.categoriesChange.next(asObj);
+    localStorage.setItem('ttr-categories', JSON.stringify(categories));
+    this.createCategories(categories);
   }
 }

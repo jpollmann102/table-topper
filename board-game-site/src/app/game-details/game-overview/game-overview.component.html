@@ -5,17 +5,18 @@
   <div class="col-6">
     <h1>Categories</h1>
     <hr>
-    <p>{{ game.categories.join(', ') }}</p>
+    <p *ngIf="game.categories.length > 0">{{ game.categories.join(', ') }}</p>
+    <p *ngIf="game.categories.length == 0"><i>None listed</i></p>
   </div>
   <div class="col-6">
     <h1>Mechanics</h1>
     <hr>
-    <p>{{ game.mechanics.join(', ') }}</p>
+    <p *ngIf="game.mechanics.length > 0">{{ game.mechanics.join(', ') }}</p>
+    <p *ngIf="game.mechanics.length == 0"><i>None listed</i></p>
   </div>
 </div>
-<h1>Official Links</h1>
-<hr>
-<p *ngIf="!game.official_url && !game.rules_url && !game.bgg_id && !game.url"><i>No links</i></p>
+<h1 *ngIf="game.official_url || game.rules_url || game.bgg_id || game.url">Official Links</h1>
+<hr *ngIf="game.official_url || game.rules_url || game.bgg_id || game.url">
 <a *ngIf="game.official_url" [href]="game.official_url" target="_blank" rel="noopener noreferrer">Publisher</a>
 <a *ngIf="game.rules_url" [href]="game.rules_url" target="_blank" rel="noopener noreferrer">Rules</a>
 <a *ngIf="game.bgg_id" [href]="bggLink()" target="_blank" rel="noopener noreferrer">Board Game Geek</a>

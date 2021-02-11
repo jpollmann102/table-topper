@@ -3,8 +3,8 @@
 <app-media-slideshow
   [items]="images"
 ></app-media-slideshow>
-<h1>Videos</h1>
-<hr>
+<h1 *ngIf="safeUrls.length > 0">Videos</h1>
+<hr *ngIf="safeUrls.length > 0">
 <div class="video" *ngFor="let url of safeUrls">
   <iframe width="560" height="315" [src]="url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>

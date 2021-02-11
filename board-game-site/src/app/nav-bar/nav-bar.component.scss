@@ -5,25 +5,25 @@
   left: 0;
   height: 100vh;
   z-index: 999;
-  background: #4caf50;
-  color: #fff;
+  background: var(--primary-light);
   transition: all 0.3s;
   -webkit-box-shadow: 1px 5px 15px 5px rgba(0,0,0,0.3);
   box-shadow: 1px 5px 15px 5px rgba(0,0,0,0.3);
+  color: var(--text-color);
 }
 
 #navbar .navbar-header {
   padding: 20px;
-  background: #214c23;
+  background: var(--primary-dark);
 }
 
 #navbar ul.components {
   padding: 10px 0;
-  border-bottom: 1px solid #3f9243;
+  border-bottom: 1px solid var(--primary-dark);
 }
 
 #navbar ul p {
-  color: #fff;
+  color: var(--text-color);
   padding: 10px;
 }
 
@@ -34,11 +34,11 @@
 }
 
 #navbar ul li a:hover {
-  color: #214c23;
-  background: #fff;
+  color: var(--primary-dark);
+  background: var(--text-color);
 }
 
 #navbar ul li.active>a {
-  color: #fff;
-  background: #3f9243;
+  color: var(--text-color);
+  background: var(--primary-dark);
 }

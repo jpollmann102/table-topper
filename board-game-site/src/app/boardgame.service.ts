@@ -6,11 +6,24 @@ import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class BoardgameService {
+export class BoardgameService  {
   private client_id:string = environment.clientID;
   public responseCache = new Map();
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    this.checkLocalStorage();
+    window.onbeforeunload = () => this.cacheToStorage();
+  }
+
+  checkLocalStorage():void {
+    const responses = localStorage.getItem('ttr-responses');
+    if(responses) this.responseCache = new Map(JSON.parse(responses));
+  }
+
+  cacheToStorage():void {
+    const serialized = JSON.stringify(Array.from(this.responseCache.entries()));
+    localStorage.setItem('ttr-responses', serialized);
+  }
 
   getResponse(url:string):Observable<any> {
     const fromCache = this.responseCache.get(url);
@@ -19,6 +32,13 @@ export class BoardgameService {
     const response = this.http.get<any>(url, { responseType: 'json' });
     response.subscribe(res => this.responseCache.set(url, res));
     return response;
+  }
+
+  getCuratedList():Observable<any> {
+    const ids = ['i5Oqu5VZgP','on5IaANEQh','oGVgRSAKwX','VCoAcOrQX6','AuBvbISHR6','eh0GTvESIX','9iBOPn3lES','j8LdPFmePE','XAI0dayGSY','guHWuXdRxQ','dgZDurgbuY'];
+    const url = `https://api.boardgameatlas.com/api/search?ids=${ids.join()}&client_id=${this.client_id}`;
+
+    return this.getResponse(url);
   }
 
   getBoardgamesById(ids:string[]):Observable<any> {

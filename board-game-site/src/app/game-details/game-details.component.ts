@@ -17,10 +17,17 @@ export class GameDetailsComponent implements OnInit {
 
   constructor(private bgService:BoardgameService,
               private route:ActivatedRoute) {
-    this.route.params.subscribe(params => this.id = params.id);
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+      this.init();
+    });
   }
 
   ngOnInit(): void {
+
+  }
+
+  init():void {
     if(!history.state || !history.state.data)
     {
       // have to get game by id
@@ -28,6 +35,7 @@ export class GameDetailsComponent implements OnInit {
     }else
     {
       this.game = history.state.data;
+      console.log(this.game);
       this.formatDescription();
       this.loading = false;
     }
@@ -44,6 +52,7 @@ export class GameDetailsComponent implements OnInit {
 
     this.loading = false;
     this.formatDescription();
+    console.log(this.game);
   }
 
   formatDescription() {

@@ -1,0 +1,11 @@
+<h1>Related Games</h1>
+<hr>
+<p *ngIf="alikeGames.length == 0">None found</p>
+<ng-container *ngIf="alikeGames.length > 0">
+  <p *ngFor="let alikeGame of alikeGames">
+    <a *ngIf="alikeGame.id != game.id">
+      {{ alikeGame.name }}
+      <img [src]="alikeGame.images.small" [title]="alikeGame.name">
+    </a>
+  </p>
+</ng-container>

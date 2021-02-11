@@ -1,10 +1,14 @@
 img {
   padding: 10px;
+  max-width: 370px;
+  max-height: 370px;
 }
 
 .game-header {
   padding: 10px;
 }
+
+.material-div { margin-left: 0px; }
 
 .divider { border-right: 1px solid black; }
 
@@ -15,26 +19,29 @@ img {
 .nav-link { padding-bottom: 5px; }
 
 .nav-item.nav-link {
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border: none;
   margin-bottom: -4px;
-  color: #3f9243;
+  color: var(--text-color);
+  background-color: var(--primary-light);
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.19), 0px -3px 3px 0px rgba(0,0,0,0.23) inset;
 
   &:hover {
-    border-bottom: 4px solid #214c23;
+    border-bottom: 4px solid var(--text-color);
     cursor: pointer;
+    box-shadow: none;
   }
 
   &.active {
+    border-top: none;
+    border-left: none;
+    border-right: none;
     border-radius: 2px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    border-bottom: 4px solid #3f9243;
-    color: solid #214c23;
-    background-color: #f2f2f3;
+    border-bottom: 4px solid var(--primary);
+    color: var(--text-color);
 
     &:hover {
-      border-bottom: 4px solid #3f9243;
+      border-bottom: 4px solid var(--primary-dark);
     }
   }
 
@@ -42,20 +49,24 @@ img {
 }
 
 #nav-tab {
-  margin-bottom: 50px;
   margin-top: 15px;
 }
 
-#nav-tab.nav.nav-tabs { border-bottom: 4px solid #f2f2f3; }
+#nav-tab.nav.nav-tabs {
+  border-bottom: 4px solid var(--primary-light);
+}
 
-.tab-content { margin-top: 10px; }
+.tab-pane {
+  margin-top: 0px;
+  padding: 15px 15px 25px 15px;
+}
 
 p > a {
-  color: blue;
+  color: var(--primary-light);
 }
 
 p > a:hover {
   cursor: pointer;
-  color: blue;
+  color: var(--primary-light);
   text-decoration: underline;
 }

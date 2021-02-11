@@ -1,11 +1,6 @@
 <div class="wrapper">
   <app-nav-bar></app-nav-bar>
-  <div class="top-bar d-flex justify-content-end align-items-center">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search games" aria-label="Search games" aria-describedby="button-addon2" [(ngModel)]="searchText">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="searchGame()">Search</button>
-    </div>
-  </div>
+  <app-top-bar></app-top-bar>
   <div id="content">
     <router-outlet></router-outlet>
   </div>

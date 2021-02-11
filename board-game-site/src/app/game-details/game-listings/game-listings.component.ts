@@ -39,7 +39,11 @@ export class GameListingsComponent implements OnInit {
     this.ukPrices = this.prices.uk;
     this.caPrices = this.prices.canada;
     this.usedPrices = this.prices.used;
-    this.historicalLow = this.game.historical_low_prices.filter(x => x.country == 'US');
+    if(this.game.historical_low_prices)
+    {
+      this.historicalLow = this.game.historical_low_prices.filter(x => x.country == 'US');
+      if(this.historicalLow.length == 0) this.historicalLow = null;
+    }
 
     this.formatPrices();
   }

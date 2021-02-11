@@ -26,6 +26,9 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { ResultRowComponent } from './search-results/result-row/result-row.component';
 import { GameReviewsComponent } from './game-details/game-reviews/game-reviews.component';
 import { GameReviewComponent } from './game-details/game-reviews/game-review/game-review.component';
+import { AboutComponent } from './about/about.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { GameRelatedComponent } from './game-details/game-related/game-related.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { GameReviewComponent } from './game-details/game-reviews/game-review/gam
     SearchResultsComponent,
     ResultRowComponent,
     GameReviewsComponent,
-    GameReviewComponent
+    GameReviewComponent,
+    AboutComponent,
+    TopBarComponent,
+    GameRelatedComponent
   ],
   imports: [
     ChartModule,

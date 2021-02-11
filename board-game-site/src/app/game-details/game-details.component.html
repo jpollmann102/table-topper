@@ -78,6 +78,18 @@
       </a>
       <a
         class="nav-item nav-link"
+        [class.active]="activeTab == 'nav-related'"
+        role="tab"
+        data-toggle="tab"
+        id="nav-related-tab"
+        aria-controls="nav-related"
+        [attr.aria-selected]="activeTab == 'nav-related'"
+        (click)="activeTab = 'nav-related'"
+      >
+        Related
+      </a>
+      <a
+        class="nav-item nav-link"
         [class.active]="activeTab == 'nav-credits'"
         role="tab"
         data-toggle="tab"
@@ -94,7 +106,7 @@
     <div
       role="tabpanel"
       id="overview"
-      class="tab-pane fade in show"
+      class="tab-pane material-div fade in show"
       [class.active]="activeTab == 'nav-overview'"
       [class.show]="activeTab == 'nav-overview'"
       aria-labelledby="nav-overview-tab"
@@ -106,7 +118,7 @@
     <div
       role="tabpanel"
       id="gallery"
-      class="tab-pane fade in show"
+      class="tab-pane material-div fade in show"
       [class.active]="activeTab == 'nav-gallery'"
       [class.show]="activeTab == 'nav-gallery'"
       aria-labelledby="nav-gallery-tab"
@@ -118,7 +130,7 @@
     <div
       role="tabpanel"
       id="listings"
-      class="tab-pane fade in show"
+      class="tab-pane material-div fade in show"
       [class.active]="activeTab == 'nav-listings'"
       [class.show]="activeTab == 'nav-listings'"
       aria-labelledby="nav-listings-tab"
@@ -130,7 +142,7 @@
     <div
       role="tabpanel"
       id="reviews"
-      class="tab-pane fade in show"
+      class="tab-pane material-div fade in show"
       [class.active]="activeTab == 'nav-reviews'"
       [class.show]="activeTab == 'nav-reviews'"
       aria-labelledby="nav-reviews-tab"
@@ -141,8 +153,20 @@
     </div>
     <div
       role="tabpanel"
+      id="related"
+      class="tab-pane material-div fade in show"
+      [class.active]="activeTab == 'nav-related'"
+      [class.show]="activeTab == 'nav-related'"
+      aria-labelledby="nav-related-tab"
+    >
+      <div class="tab-content">
+        <app-game-related [game]="game"></app-game-related>
+      </div>
+    </div>
+    <div
+      role="tabpanel"
       id="credits"
-      class="tab-pane fade in show"
+      class="tab-pane material-div fade in show"
       [class.active]="activeTab == 'nav-credits'"
       [class.show]="activeTab == 'nav-credits'"
       aria-labelledby="nav-credits-tab"

@@ -10,6 +10,8 @@ import { CategoryService } from '../../category.service';
 })
 export class ResultRowComponent implements OnInit {
   @Input() game:any;
+  private catFilled:boolean = false;
+  private mechFilled:boolean = false;
 
   constructor(private mechanicService:MechanicService,
               private catService:CategoryService,
@@ -19,20 +21,30 @@ export class ResultRowComponent implements OnInit {
     this.catService.categoriesChange.subscribe(value => this.fillCategories(value));
     this.mechanicService.mechanicsChange.subscribe(value => this.fillMechanics(value));
 
-    if(this.game) {
-      this.fillCategories(this.catService.categories);
-      this.fillMechanics(this.mechanicService.mechanics);
-    }
+    if(!this.catFilled) this.fillCategories(this.catService.categories);
+    if(!this.mechFilled) this.fillMechanics(this.mechanicService.mechanics);
   }
 
   fillCategories(value:any) {
+    this.catFilled = true;
     if(!this.game || !this.catService.categories) return;
-    this.game.categories = this.game.categories.map(x => x.name = value[x.id]);
+    else if(this.game.categories[0] && typeof this.game.categories[0] === 'string' ) return;
+    else
+    {
+      this.game.categories = this.game.categories.filter(x => x != null);
+      this.game.categories = this.game.categories.map(x => x.name = value[x.id]);
+    }
   }
 
   fillMechanics(value:any) {
+    this.mechFilled = true;
     if(!this.game || !this.mechanicService.mechanics) return;
-    this.game.mechanics = this.game.mechanics.map(x => x.name = value[x.id]);
+    else if(this.game.mechanics[0] && typeof this.game.mechanics[0] === 'string' ) return;
+    else
+    {
+      this.game.mechanics = this.game.mechanics.filter(x => x != null);
+      this.game.mechanics = this.game.mechanics.map(x => x.name = value[x.id]);
+    }
   }
 
   goToGame() {
