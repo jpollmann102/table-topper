@@ -21,7 +21,7 @@ export class TopBarComponent implements OnInit {
   }
 
   async getHotBoardGames() {
-    this.tickerGames = await this.bgService.getHotBoardgames(8).toPromise();
+    this.tickerGames = await this.bgService.getTopBoardgames(8).toPromise();
     this.tickerGames = this.tickerGames.games;
   }
 

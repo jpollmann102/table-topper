@@ -24,7 +24,11 @@ export class BoardgameService  {
       this.responseCache = new Map(JSON.parse(responses));
       const dateCreated = new Date(this.responseCache.get('dateCreated'));
       const dayDiff = this.getDifferenceInDays(now, dateCreated);
-      if(dayDiff > 6) this.responseCache.set('dateCreated', now.toString());
+      if(dayDiff < -1)
+      {
+        this.responseCache.set('dateCreated', now.toString());
+        this.responseCache = new Map();
+      }
     }else this.responseCache.set('dateCreated', now.toString());
   }
 
