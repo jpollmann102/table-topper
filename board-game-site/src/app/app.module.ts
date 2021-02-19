@@ -15,7 +15,6 @@ import { DiscoverGamesComponent } from './main-view/discover-games/discover-game
 import { GameSlideshowComponent } from './main-view/game-slideshow/game-slideshow.component';
 import { GameTileComponent } from './main-view/game-tile/game-tile.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
 import { GameListingsComponent } from './game-details/game-listings/game-listings.component';
 import { GameImagesComponent } from './game-details/game-images/game-images.component';
 import { GameCreditsComponent } from './game-details/game-credits/game-credits.component';
@@ -44,7 +43,6 @@ import { ResponseInterceptor } from './response-interceptor.service';
     GameSlideshowComponent,
     GameTileComponent,
     GameDetailsComponent,
-    SideBarComponent,
     GameListingsComponent,
     GameImagesComponent,
     GameCreditsComponent,

@@ -11,18 +11,21 @@ declare var $:any;
 })
 export class TopBarComponent implements OnInit {
   public searchText:string = '';
-  public tickerGames:any = [];
+  public curated:any = [];
+  public loading:boolean = true;
 
   constructor(private bgService:BoardgameService,
               private router:Router) { }
 
   ngOnInit(): void {
-    this.getHotBoardGames();
+    this.getCuratedList();
   }
 
-  async getHotBoardGames() {
-    this.tickerGames = await this.bgService.getTopBoardgames(8).toPromise();
-    this.tickerGames = this.tickerGames.games;
+  async getCuratedList() {
+    this.loading = true;
+    this.curated = await this.bgService.getCuratedList().toPromise();
+    this.curated = this.curated.games;
+    this.loading = false;
   }
 
   goToGame(game:any):void {
@@ -37,6 +40,11 @@ export class TopBarComponent implements OnInit {
   collapse():void {
     $('#navbar').toggleClass('toggled');
     $('#content').toggleClass('toggled');
+  }
+
+  formatGameName(name:string):string {
+    if(name.length > 17) return name.substring(0, 18).trim() + '...';
+    else return name;
   }
 
 }
