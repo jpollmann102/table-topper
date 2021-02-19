@@ -1,25 +1,37 @@
-.top-bar {
-  width: 100%;
-  min-height: 81px;
-  max-height: 81px;
-  top: 0px;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  background-color: var(--primary-light);
+.navbar {
+  padding: 0px 15px 0px 15px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 40px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.top-bar-content {
-  margin-left: 280px;
-  min-height: 81px;
+.nav-item {
+  padding: 10px 5px 0px 5px;
+  margin-right: 20px;
+
+  &:hover {
+    background-color: var(--primary-dark);
+    color: var(--text-color);
+    cursor: pointer;
+  }
 }
+
+#sidebarCollapse { margin-right: 20px; }
 
 .input-group {
-  width: 300px;
+  width: 350px;
   height: 50px;
-  margin-top: 10px;
-  margin-right: 15px;
-  z-index: 0;
+}
+
+#searchButton {
+  border-color: var(--primary-dark);
+  color: var(--primary-dark);
+  &:hover {
+    background-color: var(--primary-dark);
+    color: var(--text-color);
+  }
 }
 
 img {
@@ -27,16 +39,4 @@ img {
   max-width: 40px;
   min-height: 40px;
   min-width: 40px;
-}
-
-p { margin-bottom: 0px; }
-
-.game-ticker {
-  color: var(--text-color);
-  padding: 8px 10px 8px 10px;
-  min-width: 88px;
-  &:hover {
-    background-color: var(--primary-dark);
-    cursor: pointer;
-  }
 }

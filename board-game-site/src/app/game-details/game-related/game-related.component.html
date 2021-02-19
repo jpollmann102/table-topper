@@ -1,7 +1,10 @@
 <h1>Related Games</h1>
 <hr>
+<div *ngIf="loading" class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 <p *ngIf="alikeGames.length == 0">None found</p>
-<ng-container *ngIf="alikeGames.length > 0">
+<ng-container *ngIf="alikeGames.length > 0 && !loading">
   <p *ngFor="let alikeGame of alikeGames">
     <a *ngIf="alikeGame.id != game.id">
       {{ alikeGame.name }}

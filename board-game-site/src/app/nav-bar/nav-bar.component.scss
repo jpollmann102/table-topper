@@ -6,39 +6,83 @@
   height: 100vh;
   z-index: 999;
   background: var(--primary-light);
+  color: #fff;
   transition: all 0.3s;
-  -webkit-box-shadow: 1px 5px 15px 5px rgba(0,0,0,0.3);
-  box-shadow: 1px 5px 15px 5px rgba(0,0,0,0.3);
-  color: var(--text-color);
+  font-size: 1.1em;
 }
 
-#navbar .navbar-header {
+#navbar.toggled {
+  margin-left: -250px;
+}
+
+#navbar .navbar-heading {
   padding: 20px;
   background: var(--primary-dark);
 }
 
-#navbar ul.components {
-  padding: 10px 0;
+a {
+  padding: 20px;
   border-bottom: 1px solid var(--primary-dark);
+  &:hover {
+    background-color: var(--primary-dark);
+  }
 }
 
-#navbar ul p {
-  color: var(--text-color);
-  padding: 10px;
-}
-
-#navbar ul li a {
-  padding: 10px;
-  font-size: 1.1em;
-  display: block;
-}
-
-#navbar ul li a:hover {
-  color: var(--primary-dark);
-  background: var(--text-color);
-}
-
-#navbar ul li.active>a {
-  color: var(--text-color);
-  background: var(--primary-dark);
-}
+// #navbar {
+//   min-width: 250px;
+//   max-width: 250px;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   min-height: 100vh;
+//   z-index: 999;
+//   background: var(--primary-light);
+//   transition: all 0.3s;
+//   -webkit-box-shadow: 1px 5px 15px 5px rgba(0,0,0,0.3);
+//   box-shadow: 1px 5px 15px 5px rgba(0,0,0,0.3);
+//   color: var(--text-color);
+// }
+//
+// @media (max-width: 768px) {
+//   #sidebar {
+//     margin-left: -250px;
+//   }
+//   #sidebar.active {
+//     margin-left: 0;
+//   }
+// }
+//
+// #navbar.active {
+//   margin-left: -250px;
+// }
+//
+// #navbar .navbar-header {
+//   padding: 20px;
+//   background: var(--primary-dark);
+// }
+//
+// #navbar ul.components {
+//   padding: 10px 0;
+//   border-bottom: 1px solid var(--primary-dark);
+// }
+//
+// #navbar ul p {
+//   color: var(--text-color);
+//   padding: 10px;
+// }
+//
+// #navbar ul li a {
+//   padding: 10px;
+//   font-size: 1.1em;
+//   display: block;
+// }
+//
+// #navbar ul li a:hover {
+//   color: var(--primary-dark);
+//   background: var(--text-color);
+// }
+//
+// #navbar ul li.active>a {
+//   color: var(--text-color);
+//   background: var(--primary-dark);
+// }

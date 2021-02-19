@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ChartModule } from 'angular-highcharts';
 
@@ -29,6 +29,8 @@ import { GameReviewComponent } from './game-details/game-reviews/game-review/gam
 import { AboutComponent } from './about/about.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { GameRelatedComponent } from './game-details/game-related/game-related.component';
+import { DiscoverQueueComponent } from './discover-queue/discover-queue.component';
+import { ResponseInterceptor } from './response-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { GameRelatedComponent } from './game-details/game-related/game-related.c
     GameReviewComponent,
     AboutComponent,
     TopBarComponent,
-    GameRelatedComponent
+    GameRelatedComponent,
+    DiscoverQueueComponent
   ],
   imports: [
     ChartModule,
@@ -64,7 +67,9 @@ import { GameRelatedComponent } from './game-details/game-related/game-related.c
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

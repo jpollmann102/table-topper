@@ -7,7 +7,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class BoardgameService  {
-  private client_id:string = environment.clientID;
+  private baseURL:string = environment.baseURL;
   public responseCache = new Map();
 
   constructor(private http:HttpClient) {
@@ -17,7 +17,21 @@ export class BoardgameService  {
 
   checkLocalStorage():void {
     const responses = localStorage.getItem('ttr-responses');
-    if(responses) this.responseCache = new Map(JSON.parse(responses));
+    const now = new Date();
+
+    if(responses)
+    {
+      this.responseCache = new Map(JSON.parse(responses));
+      const dateCreated = new Date(this.responseCache.get('dateCreated'));
+      const dayDiff = this.getDifferenceInDays(now, dateCreated);
+      if(dayDiff > 6) this.responseCache.set('dateCreated', now.toString());
+    }else this.responseCache.set('dateCreated', now.toString());
+  }
+
+  getDifferenceInDays(d1, d2):number {
+    const timeDiff = d2.getTime() - d1.getTime();
+    const dayDiff = timeDiff / (1000 * 3600 * 24);
+    return dayDiff;
   }
 
   cacheToStorage():void {
@@ -36,67 +50,67 @@ export class BoardgameService  {
 
   getCuratedList():Observable<any> {
     const ids = ['i5Oqu5VZgP','on5IaANEQh','oGVgRSAKwX','VCoAcOrQX6','AuBvbISHR6','eh0GTvESIX','9iBOPn3lES','j8LdPFmePE','XAI0dayGSY','guHWuXdRxQ','dgZDurgbuY'];
-    const url = `https://api.boardgameatlas.com/api/search?ids=${ids.join()}&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/search?ids=${ids.join()}`;
 
     return this.getResponse(url);
   }
 
   getBoardgamesById(ids:string[]):Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/search?ids=${ids.join()}&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/search?ids=${ids.join()}`;
 
     return this.getResponse(url);
   }
 
   getBoardGameReviews(id:string, n=8):Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/reviews?game_id=${id}&include_game=false&include_summary=true&description_required=true&limit=${n}&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/reviews?game_id=${id}&include_game=false&include_summary=true&description_required=true&limit=${n}`;
 
     return this.getResponse(url);
   }
 
   getBoardGameImages(id:string, n=30):Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/game/images?game_id=${id}&include_game=false&limit=${n}&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/game/images?game_id=${id}&include_game=false&limit=${n}`;
 
     return this.getResponse(url);
   }
 
   getBoardGamePrices(id:string):Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/game/prices?game_id=${id}&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/game/prices?game_id=${id}`;
 
     return this.getResponse(url);
   }
 
   getBoardGameVideos(id:string, n=5):Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/game/videos?game_id=${id}&include_game=false&limit=${n}&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/game/videos?game_id=${id}&include_game=false&limit=${n}`;
 
     return this.getResponse(url);
   }
 
   getHotBoardgames(n=9):Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/search?limit=${n}&order_by=reddit_week_count&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/search?limit=${n}&order_by=reddit_week_count`;
 
     return this.getResponse(url);
   }
 
   getRandomBoardgame():Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/search?&random=true&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/search?&random=true`;
 
     return this.http.get<any>(url, { responseType: 'json' });;
   }
 
   getTopBoardgames(n=9):Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/search?limit=${n}&order_by=popularity&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/search?limit=${n}&order_by=popularity`;
 
     return this.getResponse(url);
   }
 
   fuzzySearchBoardGame(name:string):Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/search?name=${name}&fuzzy_match=true&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/search?name=${name}&fuzzy_match=true`;
 
     return this.getResponse(url);
   }
 
   getBoardgameImage(id:string):Observable<any> {
-    const url = `https://api.boardgameatlas.com/api/game/images?limit=5&include_game=false&game_id=${id}&client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/game/images?limit=5&include_game=false&game_id=${id}`;
 
     return this.getResponse(url);
   }

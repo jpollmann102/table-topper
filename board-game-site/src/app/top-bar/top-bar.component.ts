@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BoardgameService } from '../boardgame.service';
 
+declare var $:any;
+
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
@@ -28,7 +30,13 @@ export class TopBarComponent implements OnInit {
   }
 
   searchGame():void {
+    if(this.searchText === "") return;
     this.router.navigate(['/search'], { queryParams: { q: this.searchText } });
+  }
+
+  collapse():void {
+    $('#navbar').toggleClass('toggled');
+    $('#content').toggleClass('toggled');
   }
 
 }

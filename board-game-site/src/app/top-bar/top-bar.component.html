@@ -1,14 +1,19 @@
-<div class="top-bar">
-  <div class="top-bar-content d-flex justify-content-between align-content-center">
-    <div class="game-ticker" *ngFor="let game of tickerGames" (click)="goToGame(game)">
-      <img [src]="game.images.thumb">
-      <p>{{ game.name }}</p>
-    </div>
-    <div class="">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search games" aria-label="Search games" aria-describedby="button-addon2" [(ngModel)]="searchText">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="searchGame()">Search</button>
-      </div>
-    </div>
+<nav class="navbar navbar-expand-lg border-bottom">
+  <button type="button" id="sidebarCollapse" (click)="collapse()" class="btn">
+    <i class="fas fa-align-left"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li *ngFor="let game of tickerGames; let first = first;" class="nav-item" (click)="goToGame(game)">
+        <img [src]="game.images.thumb">
+        <a class="nav-link">
+          {{ game.name }}
+        </a>
+      </li>
+    </ul>
   </div>
-</div>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search games" aria-label="Search games" aria-describedby="searchButton" [(ngModel)]="searchText">
+    <button class="btn btn-outline-secondary" type="button" id="searchButton" (click)="searchGame()">Search</button>
+  </div>
+</nav>

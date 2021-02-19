@@ -8,6 +8,7 @@ import { BoardgameService } from '../../boardgame.service';
 })
 export class GameRelatedComponent implements OnInit, OnChanges {
   @Input() game;
+  public loading:boolean = true;
   public alikeGames:any = [];
 
   constructor(private bgService:BoardgameService) { }
@@ -22,8 +23,10 @@ export class GameRelatedComponent implements OnInit, OnChanges {
   }
 
   async getAlikeBoardGames() {
+    this.loading = true;
     this.alikeGames = await this.bgService.fuzzySearchBoardGame(this.game.name).toPromise();
     this.alikeGames = this.alikeGames.games;
+    this.loading = false;
   }
 
 }

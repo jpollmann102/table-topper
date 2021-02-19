@@ -1,0 +1,12 @@
+.material-div {
+  padding: 15px;
+  margin-left: 0px;
+}
+
+a {
+  color: blue;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

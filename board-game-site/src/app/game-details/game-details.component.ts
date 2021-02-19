@@ -14,12 +14,14 @@ export class GameDetailsComponent implements OnInit {
   public somethingWentWrong:boolean = false;
   public designers:string[] = [];
   private id:string;
+  private first:boolean = true;
 
   constructor(private bgService:BoardgameService,
               private route:ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.init();
+      this.first = false;
     });
   }
 
@@ -28,20 +30,25 @@ export class GameDetailsComponent implements OnInit {
   }
 
   init():void {
-    if(!history.state || !history.state.data)
+    if(!history.state || !history.state.data || !this.first)
     {
       // have to get game by id
       this.getBoardgame();
     }else
     {
-      this.game = history.state.data;
-      console.log(this.game);
-      this.formatDescription();
-      this.loading = false;
+      // fix this for changing games url when history is there
+      if(this.id == history.state.data.id)
+      {
+        this.game = history.state.data;
+        console.log(this.game);
+        this.formatDescription();
+        this.loading = false;
+      }else this.getBoardgame();
     }
   }
 
   async getBoardgame() {
+    this.loading = true;
     const game:any = await this.bgService.getBoardgamesById([this.id]).toPromise();
 
     if(!game.games || game.games.length == 0)

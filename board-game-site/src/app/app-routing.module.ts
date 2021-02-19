@@ -5,11 +5,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { AboutComponent } from './about/about.component';
+import { DiscoverQueueComponent } from './discover-queue/discover-queue.component';
 
 const routes: Routes = [
   { path: 'game/:id', component: GameDetailsComponent },
   { path: 'search', component: SearchResultsComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'discover', component: DiscoverQueueComponent },
   { path: '', component: MainViewComponent },
   { path: '**', component: NotFoundComponent }
 ];

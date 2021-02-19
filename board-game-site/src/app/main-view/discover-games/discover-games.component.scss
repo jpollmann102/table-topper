@@ -1,0 +1,9 @@
+a {
+  color: var(--primary-dark);
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+h1 { margin-right: 15px; }

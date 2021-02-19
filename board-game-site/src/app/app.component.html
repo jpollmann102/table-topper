@@ -1,8 +1,29 @@
 <div class="wrapper">
   <app-nav-bar></app-nav-bar>
-  <app-top-bar></app-top-bar>
   <div id="content">
+    <app-top-bar></app-top-bar>
     <router-outlet></router-outlet>
+    <!-- <app-side-bar></app-side-bar> -->
+    <footer>
+      <hr>
+      <div class="d-flex justify-content-center">
+        <p>Site developed by Joshua Pollmann</p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p>joshpollmann102@gmail.com - <a href="https://jpollmann102.github.io">jpollmann102.github.io</a></p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p>Data provided by Board Game Atlas</p>
+      </div>
+    </footer>
   </div>
-  <app-side-bar></app-side-bar>
+</div>
+
+<div class="toast" id="errorToast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <strong class="mr-auto">An Error Occurred</strong>
+  </div>
+  <div class="toast-body">
+    An error occurred, and some data on the page may not load correctly. Try refreshing the page.
+  </div>
 </div>

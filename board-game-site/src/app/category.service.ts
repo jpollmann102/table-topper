@@ -7,7 +7,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class CategoryService {
-  private client_id:string = environment.clientID;
+  private baseURL:string = environment.baseURL;
   public responseCache = new Map();
   public categories:any;
   categoriesChange:Subject<any> = new Subject<any>();
@@ -44,7 +44,7 @@ export class CategoryService {
   }
 
   async getCategories() {
-    const url = `https://api.boardgameatlas.com/api/game/categories?client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/game/categories`;
     const categories:any = await this.getResponse(url).toPromise();
     localStorage.setItem('ttr-categories', JSON.stringify(categories));
     this.createCategories(categories);

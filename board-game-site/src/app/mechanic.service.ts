@@ -7,7 +7,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class MechanicService {
-  private client_id:string = environment.clientID;
+  private baseURL:string = environment.baseURL;
   public responseCache = new Map();
   public mechanics:any;
   mechanicsChange:Subject<any> = new Subject<any>();
@@ -44,7 +44,7 @@ export class MechanicService {
   }
 
   async getMechanics() {
-    const url = `https://api.boardgameatlas.com/api/game/mechanics?client_id=${this.client_id}`;
+    const url = `${this.baseURL}/api/game/mechanics`;
     const mechanics:any = await this.getResponse(url).toPromise();
     localStorage.setItem('ttr-mechanics', JSON.stringify(mechanics));
     this.createMechanics(mechanics);
