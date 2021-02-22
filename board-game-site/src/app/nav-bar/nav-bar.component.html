@@ -7,6 +7,11 @@
       [routerLink]="['']"
     >Home</a>
     <a
+    [routerLinkActive]="['active']"
+    [routerLinkActiveOptions]="{exact:true}"
+    [routerLink]="['/about']"
+    >About</a>
+    <a
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{exact:true}"
       [routerLink]="['/discover']"
@@ -14,7 +19,27 @@
     <a
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{exact:true}"
-      [routerLink]="['/about']"
-    >About</a>
+      [routerLink]="['/hot-list']"
+    >The Hot List</a>
+    <a
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/top-list']"
+    >The Top List</a>
+    <a
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/search']"
+    >Browse Mechanics</a>
+    <a
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/search']"
+    >Browse Categories</a>
+    <a
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/search']"
+    >Find A Game</a>
   </div>
 </div>
