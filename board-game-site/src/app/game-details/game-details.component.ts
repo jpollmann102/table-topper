@@ -40,7 +40,6 @@ export class GameDetailsComponent implements OnInit {
       if(this.id == history.state.data.id)
       {
         this.game = history.state.data;
-        console.log(this.game);
         this.formatDescription();
         this.loading = false;
       }else this.getBoardgame();
@@ -59,7 +58,6 @@ export class GameDetailsComponent implements OnInit {
 
     this.loading = false;
     this.formatDescription();
-    console.log(this.game);
   }
 
   formatDescription() {

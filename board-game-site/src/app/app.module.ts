@@ -30,6 +30,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { GameRelatedComponent } from './game-details/game-related/game-related.component';
 import { DiscoverQueueComponent } from './discover-queue/discover-queue.component';
 import { ResponseInterceptor } from './response-interceptor.service';
+import { TopListComponent } from './top-list/top-list.component';
+import { HotListComponent } from './hot-list/hot-list.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { ResponseInterceptor } from './response-interceptor.service';
     AboutComponent,
     TopBarComponent,
     GameRelatedComponent,
-    DiscoverQueueComponent
+    DiscoverQueueComponent,
+    TopListComponent,
+    HotListComponent
   ],
   imports: [
     ChartModule,
